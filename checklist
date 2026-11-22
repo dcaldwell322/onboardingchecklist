@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claims Processor Onboarding Checklist | Company XYZ</title>
+  <style>
+    :root {
+      --bg-page: #f4f6f9;
+      --bg-card: #ffffff;
+      --text-primary: #1a202c;
+      --text-secondary: #4a5568;
+      --accent: #0052cc;
+      --accent-hover: #003d99;
+      --border: #cbd5e0;
+      --focus-ring: #ff8c00;
+      --success: #1e7e34;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 1.5rem 1rem;
+    }
+
+    /* Skip Link (WCAG 2.4.1) */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 8px 12px;
+      z-index: 100;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* High-Visibility Focus Indicator (WCAG 2.4.7 & 2.4.11) */
+    :focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    header h1 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.75rem;
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      margin: 0 0 1.5rem 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* Progress Section */
+    .progress-wrapper {
+      background: #edf2f7;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 1.75rem;
+      border: 1px solid var(--border);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    progress {
+      width: 100%;
+      height: 14px;
+      border-radius: 7px;
+      overflow: hidden;
+      appearance: none;
+    }
+    progress::-webkit-progress-bar {
+      background-color: #cbd5e0;
+      border-radius: 7px;
+    }
+    progress::-webkit-progress-value {
+      background-color: var(--success);
+      border-radius: 7px;
+      transition: width 0.25s ease;
+    }
+    progress::-moz-progress-bar {
+      background-color: var(--success);
+      border-radius: 7px;
+    }
+
+    /* Fieldsets & Checklist Items */
+    fieldset {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    legend {
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 0 0.5rem;
+      color: var(--accent);
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      margin-bottom: 0.75rem;
+    }
+    .checklist li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Minimum 24x24px Target Size (WCAG 2.5.8) */
+    .task-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 4px;
+      min-height: 44px;
+      transition: background-color 0.15s ease;
+    }
+    .task-label:hover {
+      background-color: #f7fafc;
+    }
+
+    .task-label input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .task-text {
+      flex: 1;
+    }
+
+    .task-title {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .task-desc {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    input[type="checkbox"]:checked + .task-text .task-title {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+    }
+
+    /* Controls */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: var(--text-primary);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover {
+      background-color: #edf2f7;
+    }
+
+    /* Screen-reader live region */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media print {
+      .actions, .skip-link {
+        display: none;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to checklist</a>
+
+  <main id="main-content" class="container">
+    <header>
+      <h1>Insurance Claims Processor Onboarding</h1>
+      <p class="subtitle">Company XYZ &bull; New Hire Readiness &amp; Compliance Checklist</p>
+    </header>
+
+    <section class="progress-wrapper" aria-labelledby="progress-label">
+      <div class="progress-header">
+        <span id="progress-label">Overall Completion</span>
+        <span id="progress-text">0 of 9 tasks completed (0%)</span>
+      </div>
+      <progress id="progress-bar" value="0" max="9" aria-labelledby="progress-label"></progress>
+      <div id="live-announcer" class="sr-only" aria-live="polite"></div>
+    </section>
+
+    <form id="checklist-form">
+      <fieldset>
+        <legend>Phase 1: System Access &amp; Security Setup (Days 1–2)</legend>
+        <ul class="checklist">
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="sso" />
+              <span class="task-text">
+                <span class="task-title">Activate SSO, VPN, and Multi-Factor Authentication</span>
+                <span class="task-desc">Verify login credentials for the Company XYZ network and claims portal.</span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="cms" />
+              <span class="task-text">
+                <span class="task-title">Configure Claims Management System (CMS) Profile</span>
+                <span class="task-desc">Confirm queue permissions, regional assignment, and adjuster authority limits.</span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="hipaa" />
+              <span class="task-text">
+                <span class="task-title">Complete HIPAA, PII, and Data Privacy Attestation</span>
+                <span class="task-desc">Review policyholder confidentiality rules and sign annual compliance forms.</span>
+              </span>
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>Phase 2: Policy &amp; Adjudication Fundamentals (Days 3–5)</legend>
+        <ul class="checklist">
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="coverage" />
+              <span class="task-text">
+                <span class="task-title">Review Standard Policy Forms &amp; Coverage Verification SOP</span>
+                <span class="task-desc">Practice checking policy effective dates, deductibles, exclusions, and endorsements.</span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="fnol" />
+              <span class="task-text">
+                <span class="task-title">Complete First Notice of Loss (FNOL) Intake Module</span>
+                <span class="task-desc">Validate required documentation standards and severity triage guidelines.</span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="siu" />
+              <span class="task-text">
+                <span class="task-title">Identify Fraud Red Flags &amp; SIU Escalation Triggers</span>
+                <span class="task-desc">Learn when and how to refer suspicious claims to the Special Investigations Unit.</span>
+              </span>
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>Phase 3: Shadowing &amp; Quality Calibration (Week 2)</legend>
+        <ul class="checklist">
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="shadow" />
+              <span class="task-text">
+                <span class="task-title">Shadow 5 Live End-to-End Claim Reviews</span>
+                <span class="task-desc">Observe a senior processor from initial coverage check through settlement payout.</span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="sandbox" />
+              <span class="task-text">
+                <span class="task-title">Process 3 Sandbox Practice Claims at 95%+ QA Accuracy</span>
+                <span class="task-desc">Complete test claims in the training environment and review feedback with your mentor.</span>
+              </span>
+            </label>
+          </li>
+          <li>
+            <label class="task-label">
+              <input type="checkbox" name="task" value="signoff" />
+              <span class="task-text">
+                <span class="task-title">Attend Supervisor Readiness Sign-Off Meeting</span>
+                <span class="task-desc">Confirm live queue assignment and schedule 30-day quality check-in.</span>
+              </span>
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+
+      <div class="actions">
+        <button type="button" class="btn-primary" id="print-btn">Print / Save as PDF</button>
+        <button type="button" class="btn-secondary" id="reset-btn">Reset Progress</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "xyz_claims_onboarding_v1";
+    const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"][name="task"]'));
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+    const announcer = document.getElementById("live-announcer");
+    const resetBtn = document.getElementById("reset-btn");
+    const printBtn = document.getElementById("print-btn");
+
+    function loadProgress() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        checkboxes.forEach((cb) => {
+          cb.checked = Boolean(saved[cb.value]);
+        });
+      } catch (e) {
+        console.warn("Unable to read saved progress from localStorage.");
+      }
+      updateUI(false);
+    }
+
+    function saveProgress() {
+      const state = {};
+      checkboxes.forEach((cb) => {
+        state[cb.value] = cb.checked;
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn("Unable to save progress to localStorage.");
+      }
+    }
+
+    function updateUI(announce = true) {
+      const total = checkboxes.length;
+      const completed = checkboxes.filter((cb) => cb.checked).length;
+      const percent = Math.round((completed / total) * 100);
+
+      progressBar.value = completed;
+      progressBar.max = total;
+
+      const statusString = `${completed} of ${total} tasks completed (${percent}%)`;
+      progressText.textContent = statusString;
+
+      if (announce) {
+        announcer.textContent = statusString;
+      }
+    }
+
+    checkboxes.forEach((cb) => {
+      cb.addEventListener("change", () => {
+        saveProgress();
+        updateUI(true);
+      });
+    });
+
+    resetBtn.addEventListener("click", () => {
+      checkboxes.forEach((cb) => (cb.checked = false));
+      saveProgress();
+      updateUI(true);
+      announcer.textContent = "Checklist reset. 0 of 9 tasks completed.";
+    });
+
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+
+    loadProgress();
+  </script>
+</body>
+</html>
